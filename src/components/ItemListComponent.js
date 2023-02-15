@@ -11,7 +11,6 @@ export default function ItemListComponent({ itemList }) {
           <th>Type</th>
           <th>Date</th>
           <th>Title</th>
-          <th>URL</th>
         </tr>
       </thead>
       <tbody>
@@ -20,9 +19,10 @@ export default function ItemListComponent({ itemList }) {
             <td>{index}</td>
             <td>{MEM_TYPE[item.type]}</td>
             <td>{item.date}</td>
-            <td>{item.title}</td>
             <td>
-              <a href={item.url}>link</a>
+              <a href={item.url} target="_blank">
+                {item.title}
+              </a>
             </td>
           </tr>
         ))}
