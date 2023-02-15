@@ -30,7 +30,7 @@ export default function FormDataComponent() {
   const handleAdd = () => {
     const refTitleValue = refTitle.current.value.replace(/\s+/g, "");
     const refUrlValue = refUrl.current.value.replace(/\s+/g, "");
-    if (refTitleValue.length == 0 || refUrlValue.length == 0) return;
+    if (refTitleValue.length === 0 || refUrlValue.length === 0) return;
 
     let memItem = {
       type: memType,
@@ -67,10 +67,10 @@ export default function FormDataComponent() {
     if (!file) return;
     var reader = new FileReader();
     reader.onload = function (e) {
-      const fileContentArr = eval("(" + e.target.result + ")");
+      const fileContentArr = JSON.parse(e.target.result);
       // read data from file and set memory list state
       setMemItemList(fileContentArr);
-      // Add items to Local Storage
+      // Add imported items to Local Storage
       localStorage.setItem("memItemList", JSON.stringify(fileContentArr));
     };
     reader.readAsText(file);
