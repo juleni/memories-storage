@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { MEM_TYPE } from "../constants/constants";
+import ItemListComponent from "./ItemListComponent";
 
 export default function FormDataComponent() {
   const [memType, setMemType] = useState(0);
@@ -15,7 +16,6 @@ export default function FormDataComponent() {
 
   const refTitle = useRef();
   const refUrl = useRef();
-  const refULItem = useRef();
   const refSaveBtn = useRef();
   const refFileInput = useRef();
 
@@ -144,11 +144,7 @@ export default function FormDataComponent() {
       </Form>
       <div>
         <hr />
-        <ul ref={refULItem}>
-          {memItemList.map((item, index = 0) => (
-            <li key={index++}>{JSON.stringify(item)}</li>
-          ))}
-        </ul>
+        <ItemListComponent itemList={memItemList} />
 
         {/**
          * console.log(JSON.stringify(memItemList, null, "\t"))
