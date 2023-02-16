@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { MEM_TYPE } from "../constants/constants";
-import ItemListComponent from "./ItemListComponent";
+import ItemListComponent from "./ItemSortableListComponent";
 
 export default function FormDataComponent() {
   const [memType, setMemType] = useState(0);
