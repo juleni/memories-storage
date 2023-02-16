@@ -1,13 +1,31 @@
 import React from "react";
-import BootstrapTable from "react-bootstrap-table-next";
+import { default as BootstrapTable } from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { MEM_TYPE } from "../constants/constants";
 import "./ItemListComponent.css";
 
 export default function ItemSortableListComponent({ itemList }) {
+  let rowIndex = 1;
+  let rowTemp = null;
+  const idFormatter = (data, row) => {
+    if (rowTemp === null) {
+      rowTemp = row;
+      return <div>{rowIndex++}</div>;
+    }
+    if (row !== rowTemp) {
+      console.log("not equals");
+      rowTemp = row;
+      return <div>{rowIndex++}</div>;
+    }
+
+    console.log(row);
+    console.log(rowIndex);
+  };
+
   const titleFormatter = (data, row) => {
+    //console.log(row);
     return (
-      <a href="" target="_blank">
+      <a href={row.url} target="_blank">
         {data}
       </a>
     );
@@ -18,6 +36,11 @@ export default function ItemSortableListComponent({ itemList }) {
   };
 
   const columns = [
+    {
+      dataField: "id",
+      text: "#",
+      formatter: idFormatter,
+    },
     {
       dataField: "type",
       text: "Type",
@@ -35,6 +58,7 @@ export default function ItemSortableListComponent({ itemList }) {
       formatter: titleFormatter,
     },
   ];
+
   return (
     <BootstrapTable
       keyField="id"
