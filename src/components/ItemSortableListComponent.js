@@ -5,21 +5,8 @@ import { MEM_TYPE } from "../constants/constants";
 import "./ItemListComponent.css";
 
 export default function ItemSortableListComponent({ itemList }) {
-  let rowIndex = 1;
-  let rowTemp = null;
-  const idFormatter = (data, row) => {
-    if (rowTemp === null) {
-      rowTemp = row;
-      return <div>{rowIndex++}</div>;
-    }
-    if (row !== rowTemp) {
-      console.log("not equals");
-      rowTemp = row;
-      return <div>{rowIndex++}</div>;
-    }
-
-    console.log(row);
-    console.log(rowIndex);
+  const idFormatter = (data, row, index) => {
+    return <div>{index + 1}</div>;
   };
 
   const titleFormatter = (data, row) => {
@@ -39,6 +26,7 @@ export default function ItemSortableListComponent({ itemList }) {
     {
       dataField: "id",
       text: "#",
+      sort: true,
       formatter: idFormatter,
     },
     {
