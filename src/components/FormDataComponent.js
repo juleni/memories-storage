@@ -79,6 +79,14 @@ export default function FormDataComponent() {
     reader.readAsText(file);
   };
 
+  const sortListByDate = (memItemList) => {
+    return memItemList.sort(function (a, b) {
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      return new Date(b.date) - new Date(a.date);
+    });
+  };
+
   return (
     <div className="container">
       <Form>
@@ -154,16 +162,10 @@ export default function FormDataComponent() {
           className="mb-3"
         >
           <Tab eventKey="tableView" title="Table View">
-            <ItemListComponent itemList={memItemList} />
+            <ItemListComponent itemList={sortListByDate(memItemList)} />
           </Tab>
           <Tab eventKey="timelineView" title="Timeline View">
-            <ItemTimelineComponent
-              itemList={memItemList.sort(function (a, b) {
-                // Turn your strings into dates, and then subtract them
-                // to get a value that is either negative, positive, or zero.
-                return new Date(b.date) - new Date(a.date);
-              })}
-            />
+            <ItemTimelineComponent itemList={sortListByDate(memItemList)} />
           </Tab>
         </Tabs>
 
