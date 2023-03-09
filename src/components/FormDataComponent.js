@@ -6,6 +6,7 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { MEM_TYPE } from "../constants/constants";
 import ItemListComponent from "./ItemSortableListComponent";
+import ItemTimelineComponent from "./ItemTimelineComponent";
 
 export default function FormDataComponent() {
   const [memType, setMemType] = useState(0);
@@ -33,8 +34,8 @@ export default function FormDataComponent() {
     const refTitleValue = refTitle.current.value.replace(/\s+/g, "");
     const refUrlValue = refUrl.current.value.replace(/\s+/g, "");
     if (refTitleValue.length === 0 || refUrlValue.length === 0) return;
-
     let memItem = {
+      id: memItemList.length,
       type: memType,
       date: memDate,
       title: memTitle,
@@ -155,7 +156,9 @@ export default function FormDataComponent() {
           <Tab eventKey="tableView" title="Table View">
             <ItemListComponent itemList={memItemList} />
           </Tab>
-          <Tab eventKey="timelineView" title="Timeline View"></Tab>
+          <Tab eventKey="timelineView" title="Timeline View">
+            <ItemTimelineComponent itemList={memItemList} />
+          </Tab>
         </Tabs>
 
         {/**
