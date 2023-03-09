@@ -42,7 +42,7 @@ export default function ItemTimelineComponent({ itemList }) {
 
   return (
     <div className="container-tl">
-      <h1>Memories Timeline</h1>
+      <h1 className="title">Memories Timeline</h1>
 
       <VerticalTimeline>
         {itemList.map((element) => {
