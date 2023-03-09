@@ -39,6 +39,7 @@ export default function ItemSortableListComponent({ itemList }) {
       dataField: "date",
       text: "Date",
       sort: true,
+      style: { width: "100px" },
     },
     {
       dataField: "title",
