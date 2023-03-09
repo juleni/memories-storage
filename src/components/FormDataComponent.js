@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import { MEM_TYPE } from "../constants/constants";
 import ItemListComponent from "./ItemSortableListComponent";
 
@@ -144,7 +146,17 @@ export default function FormDataComponent() {
       </Form>
       <div>
         <hr />
-        <ItemListComponent itemList={memItemList} />
+
+        <Tabs
+          defaultActiveKey="tableView"
+          id="uncontrolled-tab-example"
+          className="mb-3"
+        >
+          <Tab eventKey="tableView" title="Table View">
+            <ItemListComponent itemList={memItemList} />
+          </Tab>
+          <Tab eventKey="timelineView" title="Timeline View"></Tab>
+        </Tabs>
 
         {/**
          * console.log(JSON.stringify(memItemList, null, "\t"))
