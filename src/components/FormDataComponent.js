@@ -157,7 +157,13 @@ export default function FormDataComponent() {
             <ItemListComponent itemList={memItemList} />
           </Tab>
           <Tab eventKey="timelineView" title="Timeline View">
-            <ItemTimelineComponent itemList={memItemList} />
+            <ItemTimelineComponent
+              itemList={memItemList.sort(function (a, b) {
+                // Turn your strings into dates, and then subtract them
+                // to get a value that is either negative, positive, or zero.
+                return new Date(b.date) - new Date(a.date);
+              })}
+            />
           </Tab>
         </Tabs>
 
